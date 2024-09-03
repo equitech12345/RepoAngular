@@ -1,7 +1,7 @@
 import { Component} from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive,} from '@angular/router';
 import { HomeComponent } from "./pages/home/home.component";
-import { UserComponent } from "./user/user.component";
+import { UserComponent } from "./pages/user/user.component";
 import { IconsComponent } from "./pages/icons/icons.component";
 
 @Component({
