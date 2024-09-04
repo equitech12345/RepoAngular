@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { product, carrito } from '../../type/type';
 
 @Component({
   selector: 'app-icons',
@@ -14,9 +13,16 @@ import { product, carrito } from '../../type/type';
       >
         <div>
           <i class="btn bi bi-bell"></i>|<i
-            class="btn bi bi-cart-plus"
+            class="btn bi bi-cart-plus position-relative"
             (click)="onClicked()"
-          ></i>
+          >
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              99+
+              <span class="visually-hidden">unread messages</span>
+            </span></i
+          >
           | <i class=" btn bi bi-moon-fill"></i>
         </div>
       </div>

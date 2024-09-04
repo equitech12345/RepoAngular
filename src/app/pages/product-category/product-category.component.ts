@@ -21,8 +21,7 @@ import { Router } from '@angular/router';
                 <div class="text-center text-danger">$ {{product.price}}</div>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-warning w-50 mx-4" (click)="onProductToAdd(product)">Agregar</button>
-                <span class="badge text-bg-success p-2" >{{clicked}}</span>
+                <button type="button" class="btn btn-warning mx-4" (click)="onProductToAdd(product)">Agregar <span class="badge text-bg-light">{{clicked}}</span></button>
               </div>
             </div>
           </div>
