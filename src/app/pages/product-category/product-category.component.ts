@@ -7,8 +7,8 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   template: `
-  <div class="container text-center">
-    <div class="row row-cols-4 g-4">
+  <div class="container">
+    <div class="row justify-content-center row-cols-auto g-4">
         @for(product of products; track product.id;) {
          <div class="text-center">
            <div class="card" style="width: 14rem; height:22rem;">
@@ -22,7 +22,7 @@ import { Router } from '@angular/router';
               </div>
               <div class="card-footer">
                 <button type="button" class="btn btn-warning w-50 mx-4" (click)="onProductToAdd(product)">Agregar</button>
-                <span class="badge text-bg-success p-2">{{clicked}}</span>
+                <span class="badge text-bg-success p-2" >{{clicked}}</span>
               </div>
             </div>
           </div>
@@ -44,6 +44,7 @@ onProductClicked(id: string | undefined){
 }
 
   onProductToAdd(product: product){
+    console.log(event);
     this.clicked += 1;
     let productToAdd: carrito = {
       id: product.id,
