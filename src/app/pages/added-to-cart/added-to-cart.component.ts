@@ -38,7 +38,8 @@ import { carrito } from '../../type/type';
 <div class="container">
   <div class="text-center">
     <button class="btn btn-danger" (click)="vaciarCarrito()"> Vaciar Carrito</button>
-    <button class="btn btn-success mx-5"> Pagar</button>
+    <button class="btn btn btn-warning mx-5" (click)="onReturnClicked()">Volver</button>
+    <button class="btn btn-success"> Pagar</button>
   </div>  
 </div>
   </div>
@@ -60,5 +61,9 @@ export class AddedToCartComponent {
     localStorage.clear();
     this.listaProductToAdd = [];
     this.total = 0;
+  }
+
+  onReturnClicked() {
+    window.history.back();
   }
 }
