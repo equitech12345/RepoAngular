@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   template: `
   <div class="container">
     <div class="row justify-content-center row-cols-auto g-4">
-        @for(product of products; track product.id;) {
+        @for(product of products; track product.id; let $i = $index;) {
          <div class="text-center">
            <div class="card" style="width: 14rem; height:22rem;">
              <div class="text-center">
@@ -21,7 +21,7 @@ import { Router } from '@angular/router';
                 <div class="text-center text-danger">$ {{product.price}}</div>
               </div>
               <div class="card-footer">
-                <button type="button" class="btn btn-warning mx-4" (click)="onProductToAdd(product)">Agregar <span class="badge text-bg-light">{{clicked}}</span></button>
+                <button type="button" class="btn btn-warning mx-4" (click)="onProductToAdd(product)">Agregar <span class="badge text-bg-light">{{clicked[$i+1]}}</span></button>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@ import { Router } from '@angular/router';
   styleUrl: './product-category.component.css'
 })
 export class ProductCategoryComponent {
-clicked: number = 0;
+clicked: number[] = [];
 @Input() products: product[] | null = [];
 @Input() category: string = '';
 
@@ -43,8 +43,8 @@ onProductClicked(id: string | undefined){
 }
 
   onProductToAdd(product: product){
-    console.log(event);
-    this.clicked += 1;
+    this.clicked[parseInt(product.id)] = this.clicked[parseInt(product.id)] + 1 || 1;
+    // console.log(parseInt(product.id));
     let productToAdd: carrito = {
       id: product.id,
       name: product.name,
@@ -68,5 +68,6 @@ onProductClicked(id: string | undefined){
         localStorage.setItem('carrito', JSON.stringify(carritoParse));
       }
     }
+
   }
 }
