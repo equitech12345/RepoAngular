@@ -68,6 +68,5 @@ onProductClicked(id: string | undefined){
         localStorage.setItem('carrito', JSON.stringify(carritoParse));
       }
     }
-
   }
 }

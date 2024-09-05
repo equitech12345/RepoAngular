@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
-              99+
+              {{ totalItems }}
               <span class="visually-hidden">unread messages</span>
             </span></i
           >
@@ -31,6 +31,8 @@ import { Router } from '@angular/router';
   styleUrl: './icons.component.css',
 })
 export class IconsComponent {
+ totalItems: number = 4; 
+
   constructor(private router: Router) {}
   onClicked() {
     this.router.navigate(['/added-to-cart']);

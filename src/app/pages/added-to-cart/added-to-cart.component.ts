@@ -47,13 +47,16 @@ import { carrito } from '../../type/type';
   styleUrl: './added-to-cart.component.css'
 })
 export class AddedToCartComponent {
+  totalItems: number = 0;
   total: number = 0;
   listaProductToAdd: carrito[] | undefined;
+
   ngOnInit(): void {
     let carrito = localStorage.getItem('carrito') as string;
     this.listaProductToAdd = JSON.parse(carrito);
     for (let i = 0; i < this.listaProductToAdd!.length; i++) {
       this.total += this.listaProductToAdd![i].price * this.listaProductToAdd![i].quantity;
+      this.totalItems += this.listaProductToAdd![i].quantity;
     }
   }
 
@@ -61,6 +64,7 @@ export class AddedToCartComponent {
     localStorage.clear();
     this.listaProductToAdd = [];
     this.total = 0;
+    this.totalItems = 0;
   }
 
   onReturnClicked() {
