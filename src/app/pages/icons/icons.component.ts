@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -30,10 +30,18 @@ import { Router } from '@angular/router';
   `,
   styleUrl: './icons.component.css',
 })
-export class IconsComponent {
- totalItems: number = 4; 
+export class IconsComponent implements OnInit {
+ totalItems: number = 0; 
+
 
   constructor(private router: Router) {}
+  ngOnInit(): void {
+    let carrito = localStorage.getItem('carrito') as string;
+    let listaProductToAdd = JSON.parse(carrito);
+    for (let i = 0; i < listaProductToAdd.length; i++) {
+      this.totalItems += listaProductToAdd[i].quantity || 1;
+    }
+  }
   onClicked() {
     this.router.navigate(['/added-to-cart']);
   }

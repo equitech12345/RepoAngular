@@ -67,6 +67,8 @@ onProductClicked(id: string | undefined){
         carritoParse.push(productToAdd);
         localStorage.setItem('carrito', JSON.stringify(carritoParse));
       }
+      // this.clicked[parseInt(product.id)] = carritoParse[parseInt(product.id)-1].quantity || 1;
+      // console.log(this.clicked);
     }
   }
 }
